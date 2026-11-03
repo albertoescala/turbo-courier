@@ -3,8 +3,8 @@ import { ALL, FAQ, SITE, SITE_URL, SOCIAL, STEPS, UPDATED, updatedLabel, ZONES }
 import Quote from './quote'
 
 const NAV = [
-  ['#tarifas', 'Tarifas'],
   ['#como', 'Cómo funciona'],
+  ['#tarifas', 'Tarifas'],
   ['#empresas', 'Empresas'],
   ['#faq', 'Preguntas'],
 ]
@@ -65,12 +65,20 @@ export default function Page() {
               </a>
             ))}
           </nav>
-          <a
-            href="#cotizar"
-            className="rounded-lg bg-brand px-5 py-2.5 text-[15px] font-bold text-white transition duration-150 ease-[cubic-bezier(.2,0,0,1)] hover:-translate-y-0.5 hover:bg-brand-dark"
-          >
-            Cotizar envío
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://turbo.courierya.com/entrar"
+              className="rounded-lg border-2 border-night px-[18px] py-2 text-[15px] font-bold text-night hover:bg-night hover:text-white"
+            >
+              Iniciar sesión
+            </a>
+            <a
+              href="#cotizar"
+              className="rounded-lg bg-brand px-5 py-2.5 text-[15px] font-bold text-white transition duration-150 ease-[cubic-bezier(.2,0,0,1)] hover:-translate-y-0.5 hover:bg-brand-dark"
+            >
+              Cotizar envío
+            </a>
+          </div>
         </div>
       </header>
 
@@ -87,7 +95,7 @@ export default function Page() {
               <h1 className="headline my-5 text-[clamp(56px,8vw,96px)] leading-[.92] tracking-[-.01em] text-balance uppercase">
                 Tu envío llega <span className="text-sun">hoy</span>
               </h1>
-              <p className="mb-8 max-w-[30ch] text-[19px] text-[#d6d6d6]">Tarifa fija por distrito desde S/ {ZONES[0].price}. Sin sorpresas.</p>
+              <p className="mb-8 max-w-[30ch] text-[19px] text-[#d6d6d6]">Tarifa fija por distrito desde S/ {ZONES[0].price}.</p>
               <div className="flex flex-wrap gap-8">
                 {[
                   [String(ALL.length), 'distritos cubiertos'],
@@ -117,6 +125,22 @@ export default function Page() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Cómo funciona */}
+        <section id="como" className="scroll-mt-20 bg-white">
+          <div className="wrap py-24">
+            <h2 className={`${h2} mb-12`}>Pide en 3 pasos</h2>
+            <ol className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-8">
+              {STEPS.map(([title, text], i) => (
+                <li key={title} className={`border-t-4 pt-5 ${STEP_TONES[i]}`}>
+                  <div className="headline text-[56px] leading-none">0{i + 1}</div>
+                  <h3 className="mt-2 mb-1 text-xl font-extrabold text-ink">{title}</h3>
+                  <p className="text-muted">{text}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -177,28 +201,12 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Cómo funciona */}
-        <section id="como" className="scroll-mt-20 bg-white">
-          <div className="wrap py-24">
-            <h2 className={`${h2} mb-12`}>Pide en 3 pasos</h2>
-            <ol className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-8">
-              {STEPS.map(([title, text], i) => (
-                <li key={title} className={`border-t-4 pt-5 ${STEP_TONES[i]}`}>
-                  <div className="headline text-[56px] leading-none">0{i + 1}</div>
-                  <h3 className="mt-2 mb-1 text-xl font-extrabold text-ink">{title}</h3>
-                  <p className="text-muted">{text}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
         {/* Empresas */}
         <section id="empresas" className="scroll-mt-20 bg-brand text-white">
           <div className="wrap grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-center gap-12 py-24">
             <div>
               <h2 className={`${h2} mb-5`}>
-                ¿Vendes online? <span className="text-sun">Te llevamos los pedidos.</span>
+                ¿Tu negocio vende? <span className="text-sun">Nosotros nos encargamos de entregar.</span>
               </h2>
               <p className="mb-7 max-w-[44ch] text-lg">Recojo diario en tu tienda o almacén y entregas en toda Lima con la misma tarifa.</p>
               <div className="flex flex-wrap gap-3">
